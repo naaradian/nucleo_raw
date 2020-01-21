@@ -1,0 +1,103 @@
+  <html>
+  <head>
+  <title>MD100SE</title>
+<style>
+@import "mqx.css";
+</style> 
+  </head>
+  <html>
+  <body bgcolor="#C0C0C0" text="#FFFF00">
+
+  <a href="http://www.radian.spb.ru" title="Radian"><img src="header.gif" alt="Radian" width="990" height="50" border="0" ></a>
+
+<div id="lfnvcl">
+
+	
+	<ul id="lnv">
+	<li><h3><a href="index.html" class="pt">MD100SE Login</a></h3></li>
+	<li><h3><a href="modem.html" class="ar">Configuration...</a></h3>
+          <ul>
+	    <li><a href="modem.html">Modem</a></li>
+	    <li><a href="modulator.html">Modulator</a></li>
+	    <li><a href="demodulator.html">Demodulator</a></li>
+	    <li><a href="ethernet.html">Ethernet</a></li>
+          </ul>
+        </li>
+	<li><a href="monitoring_m.html">Monitoring Modem</a></li>
+	<li><a href="monitoring_e.html">Monitoring Ethernet</a></li>
+	<li><a href="test.html">Test</a></li>
+	<li><a href="system.html">System</a></li>
+	<li><a href="log.html">Log</a></li>
+	<li><a href="save_load.html">Save/Load</a></li>
+	<li><a href="update.html">Update</a></li>
+	</ul>
+</div>
+
+
+  <center>
+  <p><b><font size="3"><i>MD100SE Monitoring Modem v16.02.24 </i></font></b></p>
+  </center>
+  <p>
+      <form action="/monitoring_m.html" method="POST">
+	<table border="0" align = "center" bgcolor="#cadaba">
+
+	<tr><td>Lock</td><td>&nbsp;
+	<input type= "text"  size="6" maxlength="6"   id="_lock" ></td>
+	<td></td></tr> 
+
+	<tr><td>DFE</td><td>&nbsp;
+	<input type= "text"  size="3" maxlength="3"      id="dfe"></td>
+	<td></td></tr>
+
+	
+	</table>
+	</form>
+	</p>
+
+
+<script src="request.js" type="text/javascript"></script>
+<script type="text/javascript">
+if (window.attachEvent) {
+	window.attachEvent("onload", sfHover2);
+}
+</script>
+</script>
+<script type="text/javascript">
+var 	rtc_value 	= new Array(2);
+var	data_received   = 0;
+
+function parse_vars(data) {
+	var parsed = data.split( "\n" );
+
+	rtc_value[0] 		= parsed[0];
+	rtc_value[1] 		= parsed[1];
+
+ var _lock = document.getElementById('_lock')
+  _lock.value=rtc_value[0]
+
+ var dfe = document.getElementById('dfe')
+  dfe.value=rtc_value[1]
+
+}
+
+function loop() {
+	 if (!data_received)
+	makeRequest("md100se.cgi");
+	 setTimeout("loop()", 3000);
+	
+}
+ window.onload = loop()
+</script>
+
+
+
+ <div id="ftr">
+ <div id=copyright>
+		<center>&copy; Radian, Inc. 1990 - 2016. All Rights Reserved </center>
+	</div>	
+	
+</div>
+
+  </body>
+  </html>
+ 
